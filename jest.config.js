@@ -16,6 +16,6 @@ module.exports = {
         expand: false,
         openReport: false
       }
-    ]
+    ] 
   ]
 };
