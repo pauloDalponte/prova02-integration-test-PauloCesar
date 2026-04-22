@@ -21,6 +21,8 @@ describe('Fake Store API - Produtos', () => {
   afterAll(() => p.reporter.end());
 
   describe('Products', () => {
+    
+    //cadastra novo produto
 
     it('CREATE - Novo produto', async () => {
       const createRes = await p
@@ -39,12 +41,16 @@ describe('Fake Store API - Produtos', () => {
       productId = createRes.json.id;
     });
 
+    //le se existe o produto 
+
     it('READ - Obter produto criado', async () => {
       await p
         .spec()
         .get(`${baseUrl}/products/${productId}`)
         .expectStatus(StatusCodes.OK);
     });
+
+    //atualiza o produto (preco)
 
     it('UPDATE - Atualizar produto', async () => {
       await p
@@ -63,12 +69,16 @@ describe('Fake Store API - Produtos', () => {
         });
     });
 
+    //acao de delete
+
     it('DELETE - Remover produto', async () => {
       await p
         .spec()
         .delete(`${baseUrl}/products/${productId}`)
         .expectStatus(StatusCodes.OK);
     });
+
+    //valida se foi deletado
 
     it('READ - Verificar produto deletado (esperado: not found ou similar)', async () => {
       await p

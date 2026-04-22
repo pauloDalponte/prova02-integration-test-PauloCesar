@@ -15,16 +15,18 @@ describe('Fake Store API - Login', () => {
 
   describe('User', () => {
 
+      //teste login
+
     it('Auth - Login', async () => {
       const createRes = await p
         .spec()
         .post(`${baseUrl}/auth/login`)
         .withJson({
-            username: 'john_dr', 
-            password: 'pass456'
+            username: 'paulo', 
+            password: 'pc2510'
         })
         .expectStatus(StatusCodes.UNAUTHORIZED)
-        .expectBody("username or password is incorrect");
+        .expectBody("Usuário ou senha incorretos");
     });
 
   });  

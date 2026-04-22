@@ -19,6 +19,8 @@ describe('Fake Store API - CRUD de usuario', () => {
     const user = { username: 'paulo', email: 'paulocesar@gmail.com', password: 'pc2510' };
     const userUpdate = { username: 'paulo', email: 'paulocesar@gmail.com', password: 'paulo5465' };
 
+    //criacao de usuario
+
     it('CREATE - Novo usuario', async () => {
       const createRes = await p
         .spec()
@@ -32,12 +34,16 @@ describe('Fake Store API - CRUD de usuario', () => {
         UserId = createRes.json.id;
     });
 
+    //verifica usuario criado
+
     it('READ - Recuperar usuario criado', async () => {
       await p
         .spec()
         .get(`${baseUrl}/users/${UserId}`)
         .expectStatus(StatusCodes.OK);
     });
+
+    //atualiza informação do usuario
 
     it('UPDATE - Atualizar usuario', async () => {
       await p
@@ -53,12 +59,16 @@ describe('Fake Store API - CRUD de usuario', () => {
         });
     });
 
+    //deleta o usuario
+
     it('DELETE - Remover usuario', async () => {
       await p
         .spec()
         .delete(`${baseUrl}/users/${UserId}`)
         .expectStatus(StatusCodes.OK);
     });
+
+      //valida se foi deletado
 
     it('READ - Verificar usuario deletado (esperado: not found ou similar)', async () => {
       await p
