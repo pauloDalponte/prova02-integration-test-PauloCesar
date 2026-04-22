@@ -16,8 +16,8 @@ describe('Fake Store API - CRUD de usuario', () => {
 
   describe('User', () => {
 
-    const user = { username: 'john_dr', email: 'john@gmail.com', password: 'pass123' };
-    const userUpdate = { username: 'john_dr', email: 'john@gmail.com', password: 'pass456' };
+    const user = { username: 'paulo', email: 'paulocesar@gmail.com', password: 'pc2510' };
+    const userUpdate = { username: 'paulo', email: 'paulocesar@gmail.com', password: 'paulo5465' };
 
     it('CREATE - Novo usuario', async () => {
       const createRes = await p
@@ -26,7 +26,7 @@ describe('Fake Store API - CRUD de usuario', () => {
         .withJson({
             user
         })
-        .expectStatus(StatusCodes.OK)
+        .expectStatus(StatusCodes.CREATED)
         .expectJsonLike({ id: /\d+/ });
 
         UserId = createRes.json.id;

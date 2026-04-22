@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { SimpleReporter } from '../simple-reporter';
 import { faker } from '@faker-js/faker';
 
-describe('Fake Store API - CRUD de Produtos', () => {
+describe('Fake Store API - Produtos', () => {
   const p = pactum;
   const rep = SimpleReporter;
   const baseUrl = 'https://fakestoreapi.com';
@@ -27,7 +27,7 @@ describe('Fake Store API - CRUD de Produtos', () => {
           image: "http://example.com",
           category: faker.commerce.department()
         })
-        .expectStatus(StatusCodes.OK)
+        .expectStatus(StatusCodes.CREATED)
         .expectJsonLike({ id: /\d+/ });
 
       productId = createRes.json.id;
